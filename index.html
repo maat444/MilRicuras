@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CONFIGURACIÓN DE METADATOS - EDITABLE -->
+    <title>MIL RICURAS PASTELERÍA - Sitio Oficial Mil Ricuras Pastelería</title>
+    <meta name="description"
+        content="Fundado en 2017 en Anapoima Colombia por Miguel Antonio López López. Negocio familiar con servicio que se adapta a los requerimientos del cliente. Tortas especiales con diseño personalizado contactar al 3133490296 en Anapoima. Generalmente tenemos disponible tortas Tres Leches, MilkyWay y Ponqué Tradicional. Adicionalmente preparamos sobre pedido torta de Maracuyá y Semillas de Amapola, Brazos de Reina y Milhojas para más de veinte personas. Los pedidos especiales se deben hacer con mínimo tres días de anticipación. El sistema de pedidos es por WhatsApp al número +57 3133490296 o en la tienda física ubicada en la Carrera 2 número 1/70 en el Centro Comercial La Terraza en Anapoima, Colombia. El horario de atención es de lunes a domingo desde las 8:00 AM hasta las 8:00 PM. Para apartar una torta se debe realizar un abono del 50 por ciento al valor total del pedido. Se reciben abonos por transferencia bancaria, plataformas digitales Nequi, Daviplata, o en efectivo en la tienda física. El resto del valor se cancela al momento de recoger el pedido en la tienda física. Al realizar el abono en transferencia o plataformas digitales, se debe enviar el comprobante al WhatsApp 3133490296 para asignarle una factura. Una vez realizado el abono, el pedido queda reservado y no se aceptan devoluciones. En caso de cancelación del pedido, el abono solo es reembolsable en otros productos Mil Ricuras. Mil Ricuras Pastelería se compromete con la calidad del producto y se le exige al usuario hacer un buen manejo del producto en cuestiones de refrigeración y transporte. Las decoraciones especiales tienen un costo adicional al valor por porciones general, para pedidos de más de 20 personas contactar directamente al WhatsApp 3133490296.">
+    <meta name="keywords"
+        content="pastelería, colombia, cundinamarca, turismo, viajes, familia, panadería, anapoima, negocio, productos, servicios, calidad, profesional">
+    <meta name="author" content="MIL RICURAS PASTELERÍA">
+
+    <!-- FAVICON - REEMPLAZAR CON EL LOGO DEL NEGOCIO -->
+    <link rel="icon" href="static/images/icono.png" type="image/png">
+
+    <!-- HOJAS DE ESTILO -->
+    <link rel="stylesheet" href="static/css/style.css">
+
+    <!-- ICONOS (Font Awesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- FUENTES DE GOOGLE - EDITABLE (cambiar fuentes si se desea) -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- GOOGLE MAPS API REMOVED -->
+
+    <!-- SCRIPT PARA WHATSAPP -->
+    <script>
+        // Función para abrir WhatsApp con mensaje genérico
+        function openWhatsApp() {
+            // Número de WhatsApp con formato internacional (sin espacios ni caracteres especiales)
+            const phoneNumber = "+57 3133490296".replace(/\D/g, '');
+
+            // Mensaje genérico de contacto
+            const message = "Hola 👋, me gustaría obtener más información sobre los productos y servicios de Mil Ricuras. ¿Podrían ayudarme?";
+
+            // Construir URL de WhatsApp Web
+            const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+            // Abrir en pestaña nueva
+            window.open(url, '_blank');
+        }
+    </script>
+
+    <!-- AUDIO DE BIENVENIDA (elemento oculto) -->
+    <audio id="welcomeAudio" style="display: none;">
+        <source src="static/audio/welcome.mp3" type="audio/mpeg">
+        <source src="static/audio/welcome.ogg" type="audio/ogg">
+        Tu navegador no soporta audio HTML5.
+    </audio>
+
+    <!-- MODAL DE BIENVENIDA -->
+    <div id="welcomeModal" class="modal">
+        <div class="modal-content">
+            <h2>¡Bienvenido a MIL RICURAS PASTELERÍA!</h2>
+            <p>Escucha nuestro mensaje de bienvenida.</p>
+            <div class="modal-buttons">
+                <button id="playAudioBtn" class="btn-modal btn-modal-primary">
+                    <i class="fas fa-play"></i> Reproducir
+                </button>
+                <button id="skipAudioBtn" class="btn-modal btn-modal-secondary">
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE UBICACIÓN (TEXTO SOLAMENTE) -->
+    <div id="locationModal" class="modal">
+        <div class="modal-content location-modal">
+            <button class="modal-close" onclick="closeLocationModal()">✕</button>
+            <h2>📍 Nuestra Ubicación</h2>
+
+            <div class="location-info">
+                <p><strong>MIL RICURAS PASTELERÍA</strong></p>
+                <p><i class="fas fa-map-marker-alt"></i> Carrera 2 número 1/70, Anapoima, Colombia</p>
+                <p><i class="fas fa-phone"></i> +57 3133490296</p>
+                <p><i class="fas fa-clock"></i> Lunes a Domingo: 8:00 AM - 8:00 PM</p>
+            </div>
+
+            <!-- Mapa eliminado -->
+
+            <div class="location-buttons">
+                <!-- Enlace simple a Google Maps externo -->
+                <a href="https://maps.app.goo.gl/vfyKiiNsTxC8UQrBA" target="_blank" class="btn btn-primary">
+                    <i class="fas fa-external-link-alt"></i> Ver en Google Maps
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE PRODUCTOS -->
+    <div id="productsModal" class="modal">
+        <div class="modal-content products-modal">
+            <button class="modal-close" onclick="closeProductsModal()">✕</button>
+            <h2 id="productsCategoryTitle">Productos</h2>
+            <div id="productsContainer" class="products-grid">
+                <!-- Los productos se cargarán dinámicamente aquí -->
+            </div>
+        </div>
+    </div>
+
+</head>
+
+<body>
+    <!-- BOTÓN FLOTANTE WHATSAPP -->
+    <a href="https://wa.me/+573133490296" target="_blank" class="whatsapp-float" title="Contáctanos por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- BARRA DE NAVEGACIÓN SUPERIOR -->
+    <header class="header">
+        <div class="container header-container">
+            <!-- LOGO Y NOMBRE DEL NEGOCIO - EDITABLE -->
+            <div class="logo-section">
+                <!-- LOGO - REEMPLAZAR LA RUTA DE LA IMAGEN -->
+                <img src="static/images/logo.png" alt="Logo MIL RICURAS PASTELERÍA" class="logo">
+                <div class="business-name">
+                    <h1>MIL RICURAS PASTELERÍA</h1>
+                    <p class="slogan">Sabor diferente para un gusto exigente</p>
+                </div>
+            </div>
+
+            <!-- BOTÓN DE MENÚ PARA MÓVILES -->
+            <button class="menu-toggle" aria-label="Abrir menú">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- MENÚ DE NAVEGACIÓN (expandible en el futuro) -->
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#home" class="active">Inicio</a></li>
+                    <li><a href="#about">Nosotros</a></li>
+                    <li><a href="#" onclick="openLocationModal()" class="location-link">Ubicación</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
+            </nav>
+
+            <!-- BOTÓN WHATSAPP PARA MÓVILES -->
+            <div class="whatsapp-mobile">
+                <button class="btn-whatsapp" onclick="openWhatsApp()">
+                    <i class="fab fa-whatsapp"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="main-content">
+
+        <!-- SECCIÓN DEL CARRUSEL DE FOTOS -->
+        <section id="home" class="carousel-section">
+            <div class="container">
+                <h2 class="section-title">Mil Ricuras Anapoima</h2>
+                <div class="carousel-container">
+                    <!-- CARRUSEL DE IMÁGENES -->
+                    <div class="carousel" id="imageCarousel">
+
+                        <div class="carousel-slide active">
+                            <img src="static/images/carrusel/foto1.jpg"
+                                alt="Tortas tres leches, Milkyway, Ponqué tradicional y mucho más.">
+                            <div class="carousel-caption">
+                                <h3>Tortas tres leches, Milkyway, Ponqué tradicional y mucho más.</h3>
+                                <p>Tortas para toda ocasión y con diseños especiales.</p>
+                            </div>
+                        </div>
+
+                        <div class="carousel-slide ">
+                            <img src="static/images/carrusel/foto2.jpg"
+                                alt="Pedidos al 3133490296 en Anapoima Colombia">
+                            <div class="carousel-caption">
+                                <h3>Pedidos al 3133490296 en Anapoima Colombia</h3>
+                                <p>Tortas personalizadas con tres días de antelación.</p>
+                            </div>
+                        </div>
+
+                        <div class="carousel-slide ">
+                            <img src="static/images/carrusel/foto3.png"
+                                alt="Carrera 2 Número 1/70 Centro Comercial La Terraza.">
+                            <div class="carousel-caption">
+                                <h3>Carrera 2 Número 1/70 Centro Comercial La Terraza.</h3>
+                                <p>Pedidos especiales al WhatsApp 3133490296</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- CONTROLES DEL CARRUSEL -->
+                    <button class="carousel-control prev" id="prevBtn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-control next" id="nextBtn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+
+                    <!-- INDICADORES DEL CARRUSEL -->
+                    <div class="carousel-indicators">
+
+                        <span class="indicator active" data-index="0"></span>
+
+                        <span class="indicator " data-index="1"></span>
+
+                        <span class="indicator " data-index="2"></span>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN INFORMACIÓN DEL NEGOCIO -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <h2 class="section-title">Mil Ricuras Pastelería</h2>
+                <div class="about-content">
+                    <div class="nosotros-descripcion">
+                        <h1>Sobre Mil Ricuras Pastelería</h1>
+
+                        <p>Fundado en 2017 en Anapoima Colombia por <strong>Miguel Antonio López López</strong> quien
+                            cuenta con 30 años de experiencia en panadería y pastelería. </p>
+
+                        <p>Tiene un libro de recetas para negocio publicado en Amazon: <strong>Método Ricuras: Fórmulas
+                                De Panadería Y Pastelería</strong>.</p>
+
+                        <p><a href="https://www.amazon.com/-/es/Metodo-Ricuras-Formulas-Panaderia-Pasteleria/dp/1463391404"
+                                target="_blank" rel="noopener noreferrer" class="external-link">Ir a Libro Método
+                                Ricuras en Amazon</a></p>
+
+                        <p>Ahora dedicado al negocio familiar <strong>Mil Ricuras</strong> con servicio que se adapta a
+                            los requerimientos del cliente.</p>
+
+                        <div class="about-image-container">
+                            <img src="static/images/M&M.jpg" alt="Miguel y Mil Ricuras" class="about-img">
+                        </div>
+
+                        <h2>Nuestros Productos</h2>
+
+                        <p>Tortas especiales con diseño personalizado contactar al <strong>3133490296</strong> en
+                            Anapoima. Generalmente tenemos disponible:</p>
+
+                        <ul>
+                            <li><strong>Tortas Tres Leches</strong>.</li>
+                            <li><strong>Torta MilkyWay</strong>.</li>
+                            <li><strong>Ponqué Tradicional</strong>.</li>
+                        </ul>
+
+                        <p>Adicionalmente preparamos sobre pedido:</p>
+
+                        <ul>
+                            <li>Torta de biscochuelo con esponjado de Maracuyá.</li>
+                            <li>Torta de vainilla con semillas de Amapola.</li>
+                            <li>Brazos de Reina.</li>
+                            <li>Plancha de milhojas para más de veinte personas.</li>
+                        </ul>
+
+                        <h2>Información Importante</h2>
+
+                        <ul>
+                            <li>Los pedidos especiales se deben hacer con <strong>mínimo tres días de
+                                    anticipación</strong>.</li>
+                            <li>El sistema de pedidos es por <strong>WhatsApp al número +57 3133490296</strong>.</li>
+                            <li>Ubicación física: <strong>Carrera 2 número 1/70, Centro Comercial La Terraza en
+                                    Anapoima, Colombia</strong>.</li>
+                            <li><strong>Horario de atención</strong>: Lunes a domingo de 8:00 AM a 8:00 PM.</li>
+                        </ul>
+
+                        <h2>Método de Pago</h2>
+
+                        <p>Para apartar una torta se debe realizar un <strong>abono del 50%</strong> del valor total del
+                            pedido.</p>
+
+                        <p>El resto del valor se cancela al momento de recoger el pedido.</p>
+
+                        <p><strong>Formas de abono:</strong></p>
+
+                        <ul>
+                            <li>Transferencia bancaria.</li>
+                            <li>Plataformas digitales (Nequi, Daviplata).</li>
+                            <li>Efectivo en la tienda física.</li>
+                        </ul>
+
+                        <p>Al realizar el abono en transferencia o plataformas digitales, se debe enviar el comprobante
+                            al <strong>WhatsApp 3133490296</strong> para asignarle una factura.</p>
+
+                        <h2>Política de Cancelación</h2>
+
+                        <ul>
+                            <li>Una vez realizado el abono, el pedido queda <strong>reservado y no se aceptan
+                                    devoluciones</strong>.</li>
+                            <li>En caso de cancelación del pedido, el abono solo es reembolsable en <strong>otros
+                                    productos Mil Ricuras</strong>.</li>
+                        </ul>
+
+                        <h2>Recomendaciones</h2>
+
+                        <p>Mil Ricuras Pastelería se compromete con la calidad del producto y se le exige al usuario
+                            hacer un buen manejo del producto en cuestiones de:</p>
+
+                        <ul>
+                            <li><strong>Refrigeración</strong> adecuada.</li>
+                            <li><strong>Transporte</strong> cuidadoso.</li>
+                        </ul>
+
+                        <h2>Decoraciones Especiales</h2>
+
+                        <p>Las decoraciones especiales tienen un <strong>costo adicional</strong> al valor general por
+                            porciones . Para pedidos de más de 20 personas, <strong>contactar directamente al WhatsApp
+                                3133490296</strong>.</p>
+
+                    </div>
+                    <!-- NUEVAS SECCIONES DE MENÚ -->
+                    <section id="especialidades" class="menu-section">
+                        <h2><span class="icon">🎂</span> Nuestras Especialidades</h2>
+                        <ul class="specialties-list">
+                            <li><strong>Tortas y Ponqués:</strong> Tres leches, Milkyway y Ponqué tradicional.</li>
+                            <li><strong>Postres:</strong> Esponjado de Maracuyá, Torta de vino, Gelatina de colores y
+                                más.</li>
+                            <li><strong>Galletas:</strong> Galleta de Avena, Galleta de Granola, Galleta de Chocolate y
+                                muchas más.</li>
+                            <li><strong>Bebidas:</strong> Avena Cubana Especial, Tinto, Gaseosa, Agua.</li>
+                            <li><strong>Velas para Ponqué:</strong> Números mágicos, Volcanes, Emojis y más.</li>
+                        </ul>
+                    </section>
+
+                    <section id="menu" class="menu-section">
+                        <h2><span class="icon">🍰</span> Nuestro Menú</h2>
+                        <p class="menu-intro">Tortas disponibles y diseños personalizados:</p>
+                        <div class="menu-grid">
+                            <div class="menu-item">
+                                <img src="static/images/menu/torta-tres-leches.jpg" alt="Torta Tres Leches">
+                                <div class="menu-content">
+                                    <h3>Tortas y Ponqués</h3>
+                                    <p>Tres leches, Milkyway, Ponqué tradicional.</p>
+                                    <p class="menu-intro"> Para 10 personas.</p>
+                                    <span class="price">$38.000</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <img src="static/images/menu/torta-milkyway.jpg" alt="Torta Milkyway">
+                                <div class="menu-content">
+                                    <h3>Tortas y Ponqués</h3>
+                                    <p>Tres leches, Milkyway, Ponqué tradicional.</p>
+                                    <p class="menu-intro"> Para 20 personas.</p>
+                                    <span class="price">$65.000</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <img src="static/images/menu/Ponqué Tradicional.jpg"
+                                    alt="Ponqué Tradicional con frutos secos">
+                                <div class="menu-content">
+                                    <h3>Tortas y Ponqués</h3>
+                                    <p>Tres leches, Milkyway, Ponqué tradicional.</p>
+                                    <p class="menu-intro"> Para 30 personas.</p>
+                                    <span class="price">$100.000</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <img src="static/images/menu/torta10Esp.jpg" alt="Torta de 10 personas especial">
+                                <div class="menu-content">
+                                    <span class="special-badge">ESPECIAL</span>
+                                    <h3>Torta para 10 personas con decoración especial</h3>
+                                    <p>Torta para 10 personas con decoración adicional</p>
+                                    <span class="price">$50.000</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <img src="static/images/menu/torta 20 personas.jpg" alt="Pedidos especiales">
+                                <div class="menu-content">
+                                    <span class="special-badge">ESPECIAL</span>
+                                    <h3>Pedidos especiales</h3>
+                                    <p>Torta para 20 personas con decoraciones especiales.</p>
+                                    <span class="price">$80.000</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <img src="static/images/menu/torta 30 personas.jpg" alt="Pedidos especiales">
+                                <div class="menu-content">
+                                    <span class="special-badge">ESPECIAL</span>
+                                    <h3>Pedidos especiales</h3>
+                                    <p>Torta para 30 personas en tres pisos con decoración especial.</p>
+                                    <span class="price">$120.000</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <img src="static/images/menu/torta40personas.JPG" alt="Pedidos especiales">
+                                <div class="menu-content">
+                                    <span class="special-badge">ESPECIAL</span>
+                                    <h3>Pedidos especiales</h3>
+                                    <p>Torta para 40 personas en dos pisos con decoración especial.</p>
+                                    <span class="price">$150.000</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <img src="static/images/menu/50personas.jpg" alt="Pedidos especiales">
+                                <div class="menu-content">
+                                    <span class="special-badge">ESPECIAL</span>
+                                    <h3>Pedidos especiales</h3>
+                                    <p>Torta para 50 personas en tres pisos con decoración especial.</p>
+                                    <span class="price">$185.000</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <img src="static/images/menu/60personas.JPG" alt="Pedidos especiales">
+                                <div class="menu-content">
+                                    <span class="special-badge">ESPECIAL</span>
+                                    <h3>Pedidos especiales</h3>
+                                    <p>Torta para 60 personas en tres pisos con decoración especial.</p>
+                                    <span class="price">$225.000</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <img src="static/images/menu/70personas.jpg" alt="Pedidos especiales">
+                                <div class="menu-content">
+                                    <span class="special-badge">ESPECIAL</span>
+                                    <h3>Pedidos especiales</h3>
+                                    <p>Torta para 70 personas en tres pisos con decoración especial.</p>
+                                    <span class="price">$265.000</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <img src="static/images/menu/100personas.jpg" alt="Pedidos especiales">
+                                <div class="menu-content">
+                                    <span class="special-badge">ESPECIAL</span>
+                                    <h3>Pedidos especiales</h3>
+                                    <p>Torta para 100 personas en tres pisos con decoración especial.</p>
+                                    <span class="price">$370.000</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <img src="static/images/menu/postre-de-vino.jpg" alt="Postre de vino">
+                                <div class="menu-content">
+                                    <span class="special-badge">ESPECIAL</span>
+                                    <h3>Postre de vino</h3>
+                                    <p>Torta de vino tamaño personal.</p>
+                                    <p class="menu-intro">Ración 125 gramos.</p>
+                                    <span class="price">$6.000</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <img src="static/images/menu/brazodeReina.jpg" alt="Brazo de Reina">
+                                <div class="menu-content">
+                                    <span class="special-badge">ESPECIAL</span>
+                                    <h3>Brazo de Reina</h3>
+                                    <p>Brazo de reina para pedidos especiales con tres días de anticipación.</p>
+                                    <p class="menu-intro">Brazos de reina para 20 personas. </p>
+                                    <span class="price">$120.000</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <img src="static/images/menu/fresasCrema.jpg" alt="Fresas con crema">
+                                <div class="menu-content">
+                                    <span class="special-badge">ESPECIAL</span>
+                                    <h3>Fresas con crema</h3>
+                                    <p>Fresas con crema de vainilla especial, glasse de fresa, barquillo, grajeas y
+                                        gomas.</p>
+                                    <p class="menu-intro">Ración 125 gramos.</p>
+                                    <span class="price">$12.000</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <img src="static/images/menu/Avena Cubana.jpg" alt="Avena Cubana">
+                                <div class="menu-content">
+                                    <span class="special-badge">ESPECIAL</span>
+                                    <h3>Avena Cubana</h3>
+                                    <p>Bebida láctea tipo malteada a base de almidón de yuca.</p>
+                                    <p class="menu-intro">Vaso 16 onzas.</p>
+                                    <span class="price">$7.000</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE CONTACTO -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2 class="section-title">Contáctanos</h2>
+                <div class="contact-content">
+                    <!-- INFORMACIÓN DE CONTACTO -->
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h3>Ubicación</h3>
+                                <p>Carrera 2 número 1/70, Anapoima, Colombia</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <div>
+                                <h3>Teléfono</h3>
+                                <p><a href="tel:+57 3133490296">+57 3133490296</a></p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h3>Email</h3>
+                                <p><a href="mailto:metodoricuras@gmail.com">metodoricuras@gmail.com</a></p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h3>Horario de Atención</h3>
+                                <p>Lunes a Viernes: 8:00 AM - 8:00 PM</p>
+                                <p>Sábados: 8:00 AM - 8:00 PM</p>
+                                <p>Domingo: 8:00 AM - 8:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BOTONES DE ACCIÓN -->
+                    <div class="contact-actions">
+                        <button class="btn btn-whatsapp-large" onclick="openWhatsApp()">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </button>
+
+                        <div class="social-media">
+                            <h3>Síguenos en Redes Sociales</h3>
+                            <div class="social-icons">
+
+                                <a href="https://web.facebook.com/profile.php?id=100063954094204" target="_blank"
+                                    class="social-icon facebook" title="Facebook">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+
+
+
+                                <a href="https://www.instagram.com/anapoimamilricuras/" target="_blank"
+                                    class="social-icon instagram" title="Instagram">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+
+
+
+                                <a href="https://www.tiktok.com/@miguel.lopez4299?is_from_webapp=1&amp;sender_device=pc"
+                                    target="_blank" class="social-icon tiktok" title="TikTok">
+                                    <i class="fab fa-tiktok"></i>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <!-- LOGO EN EL FOOTER - EDITABLE -->
+                    <img src="static/images/logo.png" alt="Logo MIL RICURAS PASTELERÍA" class="footer-logo-img">
+                    <h3>MIL RICURAS PASTELERÍA</h3>
+                </div>
+
+                <div class="footer-info">
+                    <p>&copy; <span id="currentYear"></span> MIL RICURAS PASTELERÍA. Todos los derechos reservados.</p>
+                    <p class="footer-address">Carrera 2 número 1/70, Anapoima, Colombia</p>
+                </div>
+
+                <div class="footer-links">
+                    <a href="#home">Inicio</a> |
+                    <a href="#about">Nosotros</a> |
+                    <a href="#">Ubicación</a> |
+                    <a href="#contact">Contacto</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="static/js/main.js"></script>
+
+    <!-- SCRIPT PARA VERIFICAR WHATSAPP SYSTEM -->
+    <script>
+        // Verificar que las funciones estén disponibles
+        window.addEventListener('load', function () {
+            console.log('=' * 50);
+            console.log('✅ SISTEMA DE WHATSAPP VERIFICACIÓN');
+            console.log('=' * 50);
+            console.log('📌 shareProduct:', typeof shareProduct === 'function' ? '✓ Disponible' : '✗ NO DISPONIBLE');
+            console.log('📌 openWhatsApp:', typeof openWhatsApp === 'function' ? '✓ Disponible' : '✗ NO DISPONIBLE');
+            console.log('📌 lastWhatsAppAction:', typeof lastWhatsAppAction);
+            console.log('=' * 50);
+        });
+    </script>
+
+    <!-- SCRIPT PARA AÑO ACTUAL EN FOOTER -->
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
