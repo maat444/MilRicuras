@@ -1858,4 +1858,10 @@ body {
     .menu-item img {
         height: 180px;
     }
+
+    .menu-content h3 {
+        display: block;
+        text-align: center;
+        margin-bottom: 5px;
+    }
 }
