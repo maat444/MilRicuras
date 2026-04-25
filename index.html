@@ -8,7 +8,7 @@
     <!-- CONFIGURACIÓN DE METADATOS - EDITABLE -->
     <title>MIL RICURAS PASTELERÍA - Sitio Oficial Mil Ricuras Pastelería</title>
     <meta name="description"
-        content="Fundado en 2017 en Anapoima Colombia por Miguel Antonio López López. Negocio familiar con servicio que se adapta a los requerimientos del cliente. Tortas especiales con diseño personalizado contactar al 3133490296 en Anapoima. Generalmente tenemos disponible tortas Tres Leches, MilkyWay y Ponqué Tradicional. Adicionalmente preparamos sobre pedido torta de Maracuyá y Semillas de Amapola, Brazos de Reina y Milhojas para más de veinte personas. Los pedidos especiales se deben hacer con mínimo tres días de anticipación. El sistema de pedidos es por WhatsApp al número +57 3133490296 o en la tienda física ubicada en la Carrera 2 número 1/70 en el Centro Comercial La Terraza en Anapoima, Colombia. El horario de atención es de lunes a domingo desde las 8:00 AM hasta las 8:00 PM. Para apartar una torta se debe realizar un abono del 50 por ciento al valor total del pedido. Se reciben abonos por transferencia bancaria, plataformas digitales Nequi, Daviplata, o en efectivo en la tienda física. El resto del valor se cancela al momento de recoger el pedido en la tienda física. Al realizar el abono en transferencia o plataformas digitales, se debe enviar el comprobante al WhatsApp 3133490296 para asignarle una factura. Una vez realizado el abono, el pedido queda reservado y no se aceptan devoluciones. En caso de cancelación del pedido, el abono solo es reembolsable en otros productos Mil Ricuras. Mil Ricuras Pastelería se compromete con la calidad del producto y se le exige al usuario hacer un buen manejo del producto en cuestiones de refrigeración y transporte. Las decoraciones especiales tienen un costo adicional al valor por porciones general, para pedidos de más de 20 personas contactar directamente al WhatsApp 3133490296.">
+        content="Fundado en 2017 en Anapoima Colombia por Miguel Antonio López López. Negocio familiar con servicio que se adapta a los requerimientos del cliente. Tortas especiales con diseño personalizado contactar al 3189817340 en Anapoima. Generalmente tenemos disponible tortas Tres Leches, MilkyWay y Ponqué Tradicional. Adicionalmente preparamos sobre pedido torta de Maracuyá y Semillas de Amapola, Brazos de Reina y Milhojas para más de veinte personas. Los pedidos especiales se deben hacer con mínimo tres días de anticipación. El sistema de pedidos es por WhatsApp al número +57 3189817340 o en la tienda física ubicada en la Carrera 2 número 1/70 en el Centro Comercial La Terraza en Anapoima, Colombia. El horario de atención es de lunes a domingo desde las 8:00 AM hasta las 8:00 PM. Para apartar una torta se debe realizar un abono del 50 por ciento al valor total del pedido. Se reciben abonos por transferencia bancaria, plataformas digitales Nequi, Daviplata, o en efectivo en la tienda física. El resto del valor se cancela al momento de recoger el pedido en la tienda física. Al realizar el abono en transferencia o plataformas digitales, se debe enviar el comprobante al WhatsApp 3189817340 para asignarle una factura. Una vez realizado el abono, el pedido queda reservado y no se aceptan devoluciones. En caso de cancelación del pedido, el abono solo es reembolsable en otros productos Mil Ricuras. Mil Ricuras Pastelería se compromete con la calidad del producto y se le exige al usuario hacer un buen manejo del producto en cuestiones de refrigeración y transporte. Las decoraciones especiales tienen un costo adicional al valor por porciones general, para pedidos de más de 20 personas contactar directamente al WhatsApp 3189817340.">
     <meta name="keywords"
         content="pastelería, colombia, cundinamarca, turismo, viajes, familia, panadería, anapoima, negocio, productos, servicios, calidad, profesional">
     <meta name="author" content="MIL RICURAS PASTELERÍA">
@@ -22,6 +22,108 @@
     <!-- ICONOS (Font Awesome) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <style>
+        /* Ticker Styles */
+        .info-ticker {
+            background: linear-gradient(90deg, #d32f2f 0%, #b71c1c 100%);
+            color: white;
+            height: 40px;
+            overflow: hidden;
+            position: relative;
+            z-index: 1001;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            display: block;
+            width: 100%;
+        }
+
+        .ticker-content {
+            display: block;
+            width: 100%;
+            animation: tickerVertical 15s cubic-bezier(0.645, 0.045, 0.355, 1) infinite;
+        }
+
+        .ticker-item {
+            height: 40px;
+            line-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 1rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .ticker-item i {
+            margin-right: 10px;
+            font-size: 1.1rem;
+            color: #ffeb3b !important;
+        }
+
+        .ticker-item .phone-number {
+            font-weight: 700;
+            margin: 0 8px;
+        }
+
+        @keyframes tickerVertical {
+
+            0%,
+            30% {
+                transform: translateY(0);
+            }
+
+            33%,
+            63% {
+                transform: translateY(-40px);
+            }
+
+            66%,
+            96% {
+                transform: translateY(-80px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .info-ticker {
+                height: 55px;
+            }
+
+            .ticker-item {
+                height: 55px;
+                line-height: 1.2;
+                font-size: 0.8rem;
+                white-space: normal;
+            }
+
+            @keyframes tickerVertical {
+
+                0%,
+                30% {
+                    transform: translateY(0);
+                }
+
+                33%,
+                63% {
+                    transform: translateY(-55px);
+                }
+
+                66%,
+                96% {
+                    transform: translateY(-110px);
+                }
+
+                100% {
+                    transform: translateY(0);
+                }
+            }
+        }
+    </style>
+
     <!-- FUENTES DE GOOGLE - EDITABLE (cambiar fuentes si se desea) -->
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap"
@@ -34,7 +136,7 @@
         // Función para abrir WhatsApp con mensaje genérico
         function openWhatsApp() {
             // Número de WhatsApp con formato internacional (sin espacios ni caracteres especiales)
-            const phoneNumber = "+57 3133490296".replace(/\D/g, '');
+            const phoneNumber = "+57 3189817340".replace(/\D/g, '');
 
             // Mensaje genérico de contacto
             const message = "Hola 👋, me gustaría obtener más información sobre los productos y servicios de Mil Ricuras. ¿Podrían ayudarme?";
@@ -79,7 +181,7 @@
             <div class="location-info">
                 <p><strong>MIL RICURAS PASTELERÍA</strong></p>
                 <p><i class="fas fa-map-marker-alt"></i> Carrera 2 número 1/70, Anapoima, Colombia</p>
-                <p><i class="fas fa-phone"></i> +57 3133490296</p>
+                <p><i class="fas fa-phone"></i> +57 3189817340</p>
                 <p><i class="fas fa-clock"></i> Lunes a Domingo: 8:00 AM - 8:00 PM</p>
             </div>
 
@@ -109,7 +211,7 @@
 
 <body>
     <!-- BOTÓN FLOTANTE WHATSAPP -->
-    <a href="https://wa.me/+573133490296" target="_blank" class="whatsapp-float" title="Contáctanos por WhatsApp">
+    <a href="https://wa.me/+573189817340" target="_blank" class="whatsapp-float" title="Contáctanos por WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -148,6 +250,26 @@
                 </button>
             </div>
         </div>
+
+        <!-- INFO TICKER (Security Warning) -->
+        <div class="info-ticker">
+            <div class="ticker-content">
+                <div class="ticker-item">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    El número anterior <span class="phone-number"> +57 3133490296 </span> fue suplantado por
+                    delincuentes
+                    cibernéticos.
+                </div>
+                <div class="ticker-item">
+                    <i class="fas fa-shield-alt"></i>
+                    Evite fraudes y extorsiones
+                </div>
+                <div class="ticker-item">
+                    <i class="fas fa-phone-alt"></i>
+                    El número actual para pedidos es el <span class="phone-number">+57 3189817340</span>
+                </div>
+            </div>
+        </div>
     </header>
 
     <!-- CONTENIDO PRINCIPAL -->
@@ -172,9 +294,9 @@
 
                         <div class="carousel-slide ">
                             <img src="static/images/carrusel/foto2.jpg"
-                                alt="Pedidos al 3133490296 en Anapoima Colombia">
+                                alt="Pedidos al 3189817340 en Anapoima Colombia">
                             <div class="carousel-caption">
-                                <h3>Pedidos al 3133490296 en Anapoima Colombia</h3>
+                                <h3>Pedidos al 3189817340 en Anapoima Colombia</h3>
                                 <p>Tortas personalizadas con tres días de antelación.</p>
                             </div>
                         </div>
@@ -184,7 +306,7 @@
                                 alt="Carrera 2 Número 1/70 Centro Comercial La Terraza.">
                             <div class="carousel-caption">
                                 <h3>Carrera 2 Número 1/70 Centro Comercial La Terraza.</h3>
-                                <p>Pedidos especiales al WhatsApp 3133490296</p>
+                                <p>Pedidos especiales al WhatsApp 3189817340</p>
                             </div>
                         </div>
 
@@ -239,7 +361,7 @@
 
                         <h2>Nuestros Productos</h2>
 
-                        <p>Tortas especiales con diseño personalizado contactar al <strong>3133490296</strong> en
+                        <p>Tortas especiales con diseño personalizado contactar al <strong>3189817340</strong> en
                             Anapoima. Generalmente tenemos disponible:</p>
 
                         <ul>
@@ -262,7 +384,7 @@
                         <ul>
                             <li>Los pedidos especiales se deben hacer con <strong>mínimo tres días de
                                     anticipación</strong>.</li>
-                            <li>El sistema de pedidos es por <strong>WhatsApp al número +57 3133490296</strong>.</li>
+                            <li>El sistema de pedidos es por <strong>WhatsApp al número +57 3189817340</strong>.</li>
                             <li>Ubicación física: <strong>Carrera 2 número 1/70, Centro Comercial La Terraza en
                                     Anapoima, Colombia</strong>.</li>
                             <li><strong>Horario de atención</strong>: Lunes a domingo de 8:00 AM a 8:00 PM.</li>
@@ -284,7 +406,7 @@
                         </ul>
 
                         <p>Al realizar el abono en transferencia o plataformas digitales, se debe enviar el comprobante
-                            al <strong>WhatsApp 3133490296</strong> para asignarle una factura.</p>
+                            al <strong>WhatsApp 3189817340</strong> para asignarle una factura.</p>
 
                         <h2>Política de Cancelación</h2>
 
@@ -309,7 +431,7 @@
 
                         <p>Las decoraciones especiales tienen un <strong>costo adicional</strong> al valor general por
                             porciones . Para pedidos de más de 20 personas, <strong>contactar directamente al WhatsApp
-                                3133490296</strong>.</p>
+                                3189817340</strong>.</p>
 
                     </div>
                     <!-- NUEVAS SECCIONES DE MENÚ -->
@@ -437,7 +559,7 @@
                                     <h3>Postre de vino</h3>
                                     <p>Torta de vino tamaño personal.</p>
                                     <p class="menu-intro">Ración 125 gramos.</p>
-                                    <span class="price">$6.000</span>
+                                    <span class="price">$7.000</span>
                                 </div>
                             </div>
                             <div class="menu-item">
@@ -496,7 +618,7 @@
                             <i class="fas fa-phone-alt"></i>
                             <div>
                                 <h3>Teléfono</h3>
-                                <p><a href="tel:+57 3133490296">+57 3133490296</a></p>
+                                <p><a href="tel:+57 3189817340">+57 3189817340</a></p>
                             </div>
                         </div>
 

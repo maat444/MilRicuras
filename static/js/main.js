@@ -442,7 +442,7 @@ function shareProduct(productName, price) {
 
     // Obtener número de WhatsApp del botón flotante
     const whatsappLink = document.querySelector('.whatsapp-float');
-    let phoneNumber = '573133490296'; // Default
+    let phoneNumber = '573189817340'; // Updated official number
 
     if (whatsappLink && whatsappLink.href) {
         const match = whatsappLink.href.match(/wa\.me\/(\d+)/);
